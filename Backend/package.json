@@ -4,7 +4,7 @@
   "description": "A game rating website",
   "license": "ISC",
   "author": "SkyValen",
-  "main": "backend/server.js",
+  "main": "server.js",
   "scripts": {
     "start": "nodemon server.js"
   },
