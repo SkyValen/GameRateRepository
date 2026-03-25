@@ -2,8 +2,6 @@ const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-const gameRoutes = require('./router/GamesRoutes');
-
 app.get("/", (req, res) => {
     res.send("Welcome to the GameRate API!");
 });
