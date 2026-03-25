@@ -1,0 +1,14 @@
+{
+  "name": "gamerate",
+  "version": "1.0.0",
+  "description": "A game rating website",
+  "license": "ISC",
+  "author": "SkyValen",
+  "main": "Backend/server.js",
+  "scripts": {
+    "start": "nodemon Backend/server.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
