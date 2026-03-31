@@ -6,7 +6,7 @@
   "author": "SkyValen",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon Backend/server.js"
   },
   "devDependencies": {
     "dotenv": "^17.3.1",
