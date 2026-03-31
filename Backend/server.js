@@ -1,3 +1,4 @@
+const cors = require("cors")
 const express = require('express');
 const path = require("path");
 const app = express();
@@ -5,6 +6,7 @@ const PORT = process.env.PORT || 3000;
 
 const gameRoutes = require('./router/GamesRoutes');
 
+app.use(cors());
 app.use(express.static(path.join(__dirname, "..", "Frontend")))
 app.use(express.static(path.join(__dirname, "..", "Frontend", "scripts")))
 app.use("/games", gameRoutes);
