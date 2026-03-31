@@ -104,15 +104,20 @@ button {
 }
 
 .tag-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     list-style: none;
     padding: 0;
 }
 
-.tag-list li {
-    margin-bottom: 8px;
-    color: #0066cc;
-    font-size: 18px;
+.tag-switch {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
 }
+
 
 .plus { color: #0066cc; margin-right: 5px; cursor: pointer; }
 .minus { color: #0066cc; margin-right: 15px; cursor: pointer; }
@@ -154,10 +159,6 @@ button {
 .plus:hover, .minus:hover {
     background-color: #ddd;
     border-radius: 4px;
-}
-
-.tag-name {
-    margin-left: 5px;
 }
 
 /* Разметка страницы игры */
