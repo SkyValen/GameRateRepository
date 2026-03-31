@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>GamesRate</title>
+    <link rel="stylesheet" href="../style.css" </head>
+
+<body>
+
+    <header class="navbar">
+        <div class="logo">GamesRate</div>
+        <div class="user-controls">
+            <a href="#">
+                <button class="login-btn">Вход\Регистрация</button>
+            </a>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <main class="content">
+            <div id="games-list"></div>
+
+            <div class="pagination-container">
+                <div class="nav-buttons">
+                    <button id="prev-btn">Назад</button>
+                    <span>2 результата</span>
+                    <button id="next-btn">Вперёд</button>
+                </div>
+                <div class="pages">
+                    <button>&lt;&lt;</button> <button>&lt;</button>
+                    <button>1</button> <button class="active">2</button> <button>3</button>
+                    <button>&gt;</button> <button>&gt;&gt;</button>
+                </div>
+            </div>
+        </main>
+
+
+        <aside class="sidebar">
+            <h3>tags</h3>
+            <ul class="tag-list">
+            </ul>
+        </aside>
+    </div>
+    <script src="../scripts/mainPageScript.js"></script>
+
+</body>
+
+</html>
