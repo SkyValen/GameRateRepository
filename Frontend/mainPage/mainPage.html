@@ -23,14 +23,14 @@
 
             <div class="pagination-container">
                 <div class="nav-buttons">
-                    <button id="prev-btn">Назад</button>
-                    <span>2 результата</span>
-                    <button id="next-btn">Вперёд</button>
+                    <button id="prev-btn" onclick="prev()">Назад</button>
+                    <span id="total-count"></span>
+                    <button id="next-btn" onclick="next()">Вперёд</button>
                 </div>
                 <div class="pages">
-                    <button>&lt;&lt;</button> <button>&lt;</button>
-                    <button>1</button> <button class="active">2</button> <button>3</button>
-                    <button>&gt;</button> <button>&gt;&gt;</button>
+                    <input id="current-page" value="?" onchange="choosePage(event)">
+                    / <span id="out-of"></span>
+                    </p>
                 </div>
             </div>
         </main>
