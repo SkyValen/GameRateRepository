@@ -15,6 +15,7 @@
   "dependencies": {
     "cors": "^2.8.6",
     "express": "^5.2.1",
-    "pocketbase": "^0.26.8"
+    "pocketbase": "^0.26.8",
+    "express-openid-connect": "^2.19.4"
   }
 }

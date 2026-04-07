@@ -2,6 +2,8 @@
 const cors = require("cors")
 const express = require('express');
 const path = require("path");
+const { auth, requiresAuth } = require("express-openid-connect")
+require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -9,6 +11,20 @@ const PORT = process.env.PORT || 3000;
 const gameRoutes = require('./router/GamesRoutes');
 const tagsRoutes = require('./router/TagsRoutes');
 const userRoutes = require('./router/UserRoutes');
+
+app.set('trust proxy', true)
+
+app.use(
+    auth({
+        authRequired: false,
+        auth0Logout: true,
+        secret: process.env.AUTH0_SECRET,
+        baseURL: process.env.AUTH0_BASE_URL,
+        clientID: process.env.AUTH0_CLIENT_ID,
+        clientSecret: process.env.AUTH0_CLIENT_SECRET,
+        issuerBaseURL: process.env.AUTH0_ISSUER_BASE_URL
+    })
+)
 
 //App use section
 app.use(cors());
@@ -28,7 +44,7 @@ app.get("/", async (req, res) => {
     }
 });
 
-app.get("/game", async (req, res) => {
+app.get("/game", requiresAuth(), async (req, res) => {
     try {
         res.sendFile(path.resolve(__dirname, "../Frontend/gamePage/gamePage.html"))
     } catch (e) {
