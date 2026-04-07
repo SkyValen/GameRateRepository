@@ -17,6 +17,9 @@ let gamesPagination = {
 };
 
 async function getGamesAndTags() {
+    if (document.cookie.trim() === "") {
+        window.location.replace("/api/oauth2-redirect");
+    }
     // Fetching tags
     fetch(`/tags`)
         .then((response) => response.json())
