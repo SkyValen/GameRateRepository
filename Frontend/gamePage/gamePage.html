@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Godheart - GamesRate</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo">GamesRate</div>
+        <div class="search-container">
+        </div>
+        <div class="user-controls">
+            <a href="../auth/registration.html">
+                <button class="login-btn">Вход\Регистрация</button>
+            </a>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <main class="content">
+            <section class="game-header">
+                <img src="" id="game-image" class="game-page-img">
+                <div class="game-title-block">
+                    <h1 id="game-title">Загрузка...</h1>
+                    <p class="rating-display" id="game-rating">?/10</p>
+                    <p class="game-full-description" id="game-description"></p>
+                </div>
+            </section>
+
+            <hr class="separator">
+
+            <section class="comment-form">
+                <textarea class="comment-input" placeholder="Введите ваш комментарий..."></textarea>
+                <div class="form-footer">
+                    <div class="rating-selector">
+                        <input type="number" min="1" max="10" value="10"> <span>/ 10</span>
+                    </div>
+                    <button class="submit-btn">Отправить</button>
+                </div>
+            </section>
+
+            <section class="comments-list" id="comments-container">
+            </section>
+        </main>
+
+        <aside class="sidebar">
+            <h3>tags</h3>
+            <ul class="tag-list" id="game-tags">
+            </ul>
+        </aside>
+    </div>
+
+    <script type="module" src="../scripts/gamePageScript.js"></script>
+
+</body>
+</html>

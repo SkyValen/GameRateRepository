@@ -17,6 +17,7 @@ let gamesPagination = {
 };
 
 async function getGamesAndTags() {
+    // Fetching tags
     fetch(`/tags`)
         .then((response) => response.json())
         .then((data) => {
@@ -27,6 +28,7 @@ async function getGamesAndTags() {
         .finally(() => {
             renderTags();
         });
+    // Fetching games
     fetch(`/games/all`)
         .then((response) => response.json())
         .then(async (data) => {
@@ -38,8 +40,7 @@ async function getGamesAndTags() {
                     });
                 data[i].rating = rating
             }
-            games = data
-            tagsPagination.pages = Math.ceil(games.length / 5)
+            games = data;
         })
         .finally(() => {
             gamePagination();
@@ -76,7 +77,7 @@ function gamePagination() {
         filtered.slice(tagsPagination.offset, tagsPagination.upTo).map((item) => {
             list.innerHTML += `
             <div class="game-card">
-                <a href="#">
+                <a href="/game?id=${item.id}">
                     <img src='${item.image}' class="game-img">
                 </a>
                 <div class="game-info">
@@ -94,7 +95,7 @@ function gamePagination() {
         games.slice(gamesPagination.offset, gamesPagination.upTo).map((item) => {
             list.innerHTML += `
             <div class="game-card">
-                <a href="#">
+                <a href="/game?id=${item.id}">
                     <img src='${item.image}' class="game-img">
                 </a>
                 <div class="game-info">

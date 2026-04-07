@@ -51,4 +51,35 @@ router.get("/tags", async (req, res) => {
     res.json(tags)
 })
 
+router.get("/game", async (req, res) => {
+    const id = req.query.id;
+    const record = await db.collection("game").getOne(id);
+    let game = {
+        id: record.id,
+        name: record.name,
+        description: record.description,
+        image: db.files.getURL(record, record.image),
+    };
+    console.log(game);
+    res.json(game);
+});
+
+router.get("/game/comments", async (req, res) => {
+    const id = req.query.id;
+    const records = await db.collection("review").getFullList({
+        filter: `game_id="${id}"`
+    });
+    let comments = [];
+    for (let item of records) {
+        let comment = {
+            id: item.id,
+            userId: item.user_id,
+            text: item.review,
+            userRating: item.rating,
+        };
+        comments.push(comment);
+    }
+    res.json(comments);
+})
+
 module.exports = router
