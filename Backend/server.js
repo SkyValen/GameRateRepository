@@ -53,15 +53,6 @@ app.get("/game", requiresAuth(), async (req, res) => {
     }
 })
 
-app.get("/login", (req, res) => {
-    try {
-        res.sendFile(path.resolve(__dirname, "../Frontend/loginPage/loginPage.html"))
-    } catch (e) {
-        console.error(e);
-        res.status(500).json({ error: e.message });
-    }
-})
-
 // Listener
 app.listen(PORT, '0.0.0.0', () => {
     console.log(`Server is running on port ${PORT}`);
