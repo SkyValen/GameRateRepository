@@ -17,7 +17,7 @@ router.get("/all", async (req, res) => {
         };
         const tags = await db.collection("game_tags").getFullList({
             filter: `game_id="${item.id}"`
-        })
+        });
         for (let item of tags) {
             try {
                 let tag = (await db.collection("tags").getOne(item.tag_id)).name
