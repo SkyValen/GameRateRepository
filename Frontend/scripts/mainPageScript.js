@@ -45,7 +45,7 @@ async function getGamesAndTags() {
         .finally(() => {
             gamePagination();
         })
-}
+};
 // Render functions
 function renderTags() {
     let list = document.getElementById("tag-list")
@@ -58,8 +58,7 @@ function renderTags() {
             </div>
         `
     })
-}
-
+};
 function gamePagination() {
     let list = document.getElementById("games-list");
     let count = document.getElementById("total-count");
@@ -77,11 +76,9 @@ function gamePagination() {
         filtered.slice(tagsPagination.offset, tagsPagination.upTo).map((item) => {
             list.innerHTML += `
             <div class="game-card">
-                <a href="/game?id=${item.id}">
-                    <img src='${item.image}' class="game-img">
-                </a>
+                <img src='${item.image}' class="game-img" onclick="gamePage(event, ${item.id})">
                 <div class="game-info">
-                    <h2><a href="#">${item.name}</a></h2>
+                    <h2 onclick="gamePage(event, ${item.id})">${item.name}</a></h2>
                     <p class="rating">${item.rating != undefined ? item.rating : "?"}/10</p>
                     <p class="description">${item.description}</p>
                 </div>
@@ -99,7 +96,7 @@ function gamePagination() {
                     <img src='${item.image}' class="game-img">
                 </a>
                 <div class="game-info">
-                    <h2><a href="#">${item.name}</a></h2>
+                    <h2><a href="/game?id=${item.id}">${item.name}</a></h2>
                     <p class="rating">${item.rating != undefined ? item.rating : "?"}/10</p>
                     <p class="description">${item.description}</p>
                 </div>
@@ -111,6 +108,11 @@ function gamePagination() {
     }
     count.innerHTML = `${filtered.length} Результатов`;
     outOf.innerHTML = `Из ${Math.ceil(filtered.length / 5)}`
+};
+//redirect to game page
+function gamePage(e, id) {
+    e.preventDefault();
+    window.location.href = `/game?id=${id}`;
 }
 // Filter functions
 function exclude(e) {
@@ -125,8 +127,7 @@ function exclude(e) {
     tagsPagination.upTo = 5;
     gamePagination();
     console.log(`include: ${tagsPagination.include}\nexclude: ${tagsPagination.exclude}`)
-}
-
+};
 function include(e) {
     let value = e.target.value;
     if (tagsPagination.include.includes(value)) {
@@ -139,7 +140,7 @@ function include(e) {
     tagsPagination.upTo = 5;
     gamePagination();
     console.log(`include: ${tagsPagination.include}\nexclude: ${tagsPagination.exclude}`)
-}
+};
 // Pagination functions
 function next() {
     if (filter && Math.ceil(tagsPagination.upTo / 5) < tagsPagination.pages) {
@@ -150,7 +151,7 @@ function next() {
         gamesPagination.upTo += 5;
     }
     gamePagination();
-}
+};
 function prev() {
     if (filter && tagsPagination.offset > 0) {
         tagsPagination.offset -= 5;
@@ -160,8 +161,7 @@ function prev() {
         gamesPagination.upTo -= 5;
     }
     gamePagination();
-}
-
+};
 function choosePage(e) {
     let value = e.target.value;
     if (filter) {
@@ -172,6 +172,6 @@ function choosePage(e) {
         gamesPagination.upTo = value * 5;
     }
     gamePagination();
-}
+};
 
 getGamesAndTags();

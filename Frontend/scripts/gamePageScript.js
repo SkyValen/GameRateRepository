@@ -1,12 +1,13 @@
-// 1. Получаем ID из URL (например, из ?id=2)
+// get id from url
 const urlParams = new URLSearchParams(window.location.search);
 const gameId = urlParams.get('id');
 
-// 2. Ищем данные конкретной игры
+// get game info
 async function renderGame() {
     let game = await fetch(`/games/game?id=${gameId}`)
         .then(response => response.json())
         .then(async (data) => {
+            console.log(data)
             let comments = await fetch("/games/game/comments?id=" + gameId)
                 .then(response => response.json())
                 .then(comments => {
@@ -19,9 +20,9 @@ async function renderGame() {
                     .then(user => {
                         return user;
                     });
-                console.log("Пользователь комментария:", user);
+                console.log("Пользователь комментария:", user.color);
             })
-            
+
             data.comments = comments;
             console.log(data)
             return data;
@@ -66,7 +67,7 @@ async function renderGame() {
         }
     } else {
         // Если игра не найдена
-        document.querySelector('.content').innerHTML = '<h1>Игра не найдена</h1><a href="index.html">Вернуться на главную</a>';
+        document.querySelector('.content').innerHTML = '<h1>Игра не найдена</h1><a href="/">Вернуться на главную</a>';
     }
 }
 

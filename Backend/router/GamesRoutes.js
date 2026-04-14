@@ -53,6 +53,7 @@ router.get("/tags", async (req, res) => {
 
 router.get("/game", async (req, res) => {
     const id = req.query.id;
+    console.log(id);
     const record = await db.collection("game").getOne(id);
     let game = {
         id: record.id,
